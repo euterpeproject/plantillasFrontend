@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+
+    <style>
+        body{
+            background: linear-gradient(to left, black, grey);
+        }
+        img{
+            margin: 20px;
+            margin-top: 35px;
+            box-shadow: 
+            0px 0px 15px black,
+            0px 0px 15px black,
+            0px 0px 15px black,
+            0px 0px 15px black;
+            border-radius: 0px 10px;
+        }
+        ul {
+            text-align: center;
+            margin-top: 25px;
+        }
+        ul li {
+            display: inline-block;
+            list-style: none;
+            background: black;
+            color: white;
+            padding: 5px 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 900;
+            border-radius: 50px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 20px;
+            width: 150px;
+            box-shadow: 0px 0px 15px white inset,
+            0px 0px 10px white;
+        }
+        .titulo{
+            color: black;
+            text-shadow: 
+            0px 0px 5px white,
+            0px 0px 5px white,
+            0px 0px 5px white;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div class="container">
+
+        <br><h1 class="text-center titulo">Filterizer</h1><br>
+
+        <div class="col-md-12 col-xs-12">
+            <ul>
+                <li data-filter="all">All</li>
+                <li data-filter="1">Web</li>
+                <li data-filter="2">Graphics</li>
+                <li data-filter="3">Marketing</li>
+            </ul>
+        </div>  
+    
+    <center>
+    <div class="filter-container">
+            <div class="col-md-4 filtr-item" data-category="1" data-sort="value">
+                <img src="images/1.png" width="200px" alt="sample" />
+            </div>
+            <div class="col-md-4 filtr-item" data-category="2, 1" data-sort="value">
+                <img src="images/2.png" width="200px" alt="sample" />
+            </div>
+            <div class="col-md-4 filtr-item" data-category="1, 3, 4" data-sort="value">
+                <img src="images/3.png" width="200px" alt="sample" />
+            </div>
+            <div class="col-md-4 filtr-item" data-category="2, 3" data-sort="value">
+                <img src="images/4.png" width="200px" alt="sample" />
+            </div>
+            <div class="col-md-4 filtr-item" data-category="3, 4, 1" data-sort="value">
+                <img src="images/5.png" width="200px" alt="sample" />
+            </div>
+            <div class="col-md-4 filtr-item" data-category="4, 5, 6" data-sort="value">
+                <img src="images/6.png" width="200px" alt="sample" />
+            </div>
+    </div></center>
+
+      
+</div>
+
+      <script src="plugins/jquery/jquery.min.js"></script>
+      <script src="plugins/filterzr/jquery.filterizr.min.js"></script>
+
+      <script>
+        const filterizd = $('.filter-container').filterizr({
+            animationDuration: 0.5, // in seconds
+        });
+
+      </script>
+
+    
+</body>
+</html>

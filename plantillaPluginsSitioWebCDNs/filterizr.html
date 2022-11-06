@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filterizr</title>
+
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+
+    <style>
+        .card {
+            height: 300px;
+            border: 0px;
+            padding: 15px;
+        }
+
+        .filter-container {
+            margin: 0px;
+        }
+
+        .filtr-title {
+            position: absolute;
+            bottom: 20px;
+            padding: 5px;
+            background: #e3e3e3;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center pt-3">Filterizr</h1>
+        <div class="filters">
+            <ul class="btn-group simplefilter d-flex p-2">
+                <li class="btn m-1 filtr-controls btn-primary badge-pill" data-filter="all">All</li>
+                <li class="btn m-1 filtr-controls btn-primary badge-pill" data-filter="2">Cities</li>
+                <li class="btn m-1 filtr-controls btn-primary badge-pill" data-filter="3">Nature</li>
+                <li class="btn m-1 filtr-controls btn-primary badge-pill" data-filter="4">Manmade</li>
+                <li class="btn m-1 filtr-controls btn-primary badge-pill" data-filter="5">Culture</li>
+            </ul>
+            <div class="additional p-2 d-flex justify-content-between">
+                <!-- Shuffle -->
+                <button class="btn btn-warning" id="shuffle">Shuffle</button>
+                <!-- To create a search control -->
+                <div class="input-group pl-2 pr-2">
+                    <input type="text" class="form-control filtr-controls" name="filtr-search" value=""
+                     placeholder="Your search" data-search>
+                </div>
+                <!-- To choose the value by which you want to sort add -->
+                <div class="input-group">
+                    <div class="btn-group pr-2">
+                        <div class="btn btn-danger filtr-controls" id="asc-btn">Asc</div>
+                        <div class="btn btn-danger filtr-controls" id="des-btn">Desc</div>
+                    </div>
+                    <select data-sortOrder class="custom-select filtr-controls">
+                        <option value="sortData" class="filtr-controls">Order it appears in DOM</option>
+                        <option value="author" class="filtr-controls">Value of data-sort attribute</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="cards d-flex row filter-container">
+            <div class="card col-lg-4 filtr-item" data-category="5" data-sort="value" data-author="q">
+                <img src="images/bird-liang-nDGFOpkP2OM-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">China</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="4" data-sort="BusyStreet" data-author="v">
+                <img src="images/cody-hiscox-Hp5Acad1H0k-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">Bridge</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="2, 4" data-sort="value" data-author="c">
+                <img src="images/danist-dqXiw7nCb9Q-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">UrbanForest</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="4" data-sort="value" data-author="x">
+                <img src="images/david-oakill-kWGLM4S52-8-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">Rail Track</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="2, 4" data-sort="value" data-author="z">
+                <img src="images/eric-weber-GAVSpEx6ooc-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">BusyRoad</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="3" data-sort="value" data-author="f">
+                <img src="images/faisal-arshed-4ZFUM8z4Fho-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">I am bp</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="2, 4" data-sort="value" data-author="d">
+                <img src="images/jon-tyson-497cvswo0oY-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">Modern Architecture</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="4" data-sort="value" data-author="s">
+                <img src="images/lars-kuczynski-1MClItU5AbI-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">Industry</div>
+            </div>
+            <div class="card col-lg-4 filtr-item" data-category="5" data-sort="value" data-author="a">
+                <img src="images/luca-vavassori-_eERG7nYDp4-unsplash.jpg" alt="An Image">
+                <div class="filtr-title">China Town</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/filterzr/jquery.filterizr.min.js"></script>
+
+    <script>
+        const filterizr = $('.filter-container').filterizr({
+            controlsSelector: '.filtr-controls',
+            gridItemsSelector: '.filtr-item',
+            spinner: {
+                enable: true,
+            },
+        });
+
+        $("#shuffle").click(() => {
+            filterizr.filterizr('shuffle');
+        })
+
+        const sortFilterizr = (order) => {
+            filterizr.filterizr('sort',$("select :selected").val(), order);
+        }
+
+        $("#asc-btn").click(() => sortFilterizr('asc'));
+        $("#des-btn").click(() => sortFilterizr('desc'));
+
+    </script>
+
+</body>
+</html>
